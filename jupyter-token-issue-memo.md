@@ -5,6 +5,7 @@
 **场景**：运行 `jupyter notebook` 启动后，默认在 Safari 浏览器中可以正常使用，但将 URL 地址复制到 Chrome 浏览器后，提示需要登录，却不知道密码。
 
 **现象**：
+
 - Safari 浏览器：正常访问 ✅
 - Chrome 浏览器：提示需要 Token 或密码 ❌
 
@@ -21,13 +22,14 @@ Jupyter Notebook 默认使用 **Token（令牌）认证机制**，而不是传�
 ### 2. Token 存储在浏览器 Cookie 中
 
 当你首次通过带 Token 的完整 URL 访问 Jupyter 时：
+
 - 浏览器会将 Token 存储在 Cookie 中
 - 后续访问同一浏览器时，Cookie 自动验证身份
 
 ### 3. 为什么复制 URL 到 Chrome 无���访问？
 
 | 原因 | 说明 |
-|------|------|
+| ------ | ------ |
 | **Cookie 不共享** | Safari 的 Cookie 不会同步到 Chrome |
 | **URL 可能不完整** | 复制时可能丢失了 `?token=xxx` 参数 |
 | **Token 是一次性验证** | 首次访问后，Token 信息存入 Cookie，URL 栏可能不再显示完整 Token |
@@ -52,6 +54,7 @@ jupyter notebook list
 ```
 
 **输出示例**：
+
 ```
 Currently running servers:
 http://localhost:8888/?token=abc123def456...  ::  /Users/username/notebooks
@@ -78,6 +81,7 @@ jupyter notebook password
 ```
 
 **交互过程**：
+
 ```
 Enter password: ********
 Verify password: ********
@@ -125,7 +129,7 @@ c.NotebookApp.password = ''
 ## 📊 方案对比
 
 | 方案 | 难度 | 持久性 | 安全性 | 推荐场景 |
-|------|------|--------|--------|----------|
+| ------ | ------ | -------- | -------- | ---------- |
 | 获取 Token URL | ⭐ | 临时 | 高 | 临时切换浏览器 |
 | 手动输入 Token | ⭐ | 临时 | 高 | 偶尔使用 |
 | 设置密码 | ⭐⭐ | 永久 | 高 | **日常使用（推荐）** |
